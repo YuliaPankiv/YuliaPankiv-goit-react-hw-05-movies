@@ -32,7 +32,7 @@ export async function getMovieByName(queryString) {
   const query = `/search/movie?query=${queryString}`;
   try {
     const { data } = await instance.get(query);
-    console.log(data);
+    // console.log(data);
     return data;
   } catch (error) {
     throw error;

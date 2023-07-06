@@ -12,8 +12,7 @@ export const App = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePages />}></Route>
           <Route path="/movies/:id" element={<MoviDetailsPages />} />{' '}
-          <Route path="movies" element={<MoviesPages />}>
-          </Route>
+          <Route path="movies" element={<MoviesPages />}></Route>
         </Route>
       </Routes>
     </Container>

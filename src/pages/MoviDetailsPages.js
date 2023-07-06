@@ -1,15 +1,12 @@
-import useFetchEvents from 'hooks/useFetchEvents';
 import { useEffect, useState } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
-import {
-  getMovieById,
-  getMovieByName,
-  getMovieDetails,
-} from 'services/movieApi';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
+import { getMovieById } from 'services/movieApi';
 import NoImage from '../image/NoImage.svg.png';
 const MoviDetailsPages = () => {
   const [movies, setMovies] = useState([]);
-
+  const location = useLocation();
+  const backLinkHref = location.state?.from ?? '/';
+  console.log(location.state);
   const { id } = useParams();
   useEffect(() => {
     getMovieById(id).then(setMovies);
@@ -17,8 +14,8 @@ const MoviDetailsPages = () => {
   const { title, poster_path, name, overview, vote_average, genres } = movies;
   return (
     <>
-      <button>Go back</button>
-      {title && <h2>{title}</h2>}{' '}
+      <Link to={backLinkHref}>Back to products</Link>
+      {title && <h2>{title}</h2>}
       {vote_average && <p>User Score: {vote_average}</p>}
       {overview && (
         <>

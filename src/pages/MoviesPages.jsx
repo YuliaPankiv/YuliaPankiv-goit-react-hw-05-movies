@@ -1,6 +1,6 @@
 import ListMovies from 'components/ListMovies';
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { Outlet, useSearchParams } from 'react-router-dom';
 import { getMovieByName } from 'services/movieApi';
 
 const MoviesPages = () => {
@@ -9,7 +9,7 @@ const MoviesPages = () => {
   const query = searchParams.get('query');
 
   useEffect(() => {
-    if (query.trim() === '' || query === null) return;
+    if (query === '' || query === null) return;
     getMovieByName(query).then(setMovies);
   }, [query]);
 
@@ -19,8 +19,7 @@ const MoviesPages = () => {
     setSearchParams({ query: form.elements.query.value });
     form.reset();
   };
-
-  console.log(movies);
+  // console.log(movies);
   return (
     <div>
       <form onSubmit={ClickOnButton}>
@@ -29,6 +28,7 @@ const MoviesPages = () => {
       </form>
 
       {query && <ListMovies movies={movies.results} />}
+      <Outlet />
     </div>
   );
 };
