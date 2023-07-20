@@ -1,14 +1,11 @@
-import useFetchEvents from 'hooks/useFetchEvents';
 import { Suspense, useEffect, useRef, useState } from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { getMovieById } from 'services/movieApi';
 import NoImage from '../image/NoImage.svg.png';
 const MoviDetailsPages = () => {
   const [movies, setMovies] = useState([]);
-
   const location = useLocation();
   const backLinkHref = useRef(location.state?.from ?? '/');
-  // console.log(location.state);
   const { id } = useParams();
   useEffect(() => {
     getMovieById(id).then(setMovies);
@@ -41,7 +38,7 @@ const MoviDetailsPages = () => {
           alt="preview"
         />
       ) : (
-        <img src={NoImage} alt="No Image Available" />
+        <img src={NoImage} alt="preview" />
       )}
       <div>
         <hr />
@@ -49,7 +46,6 @@ const MoviDetailsPages = () => {
         <ul>
           <li>
             <Link to={'cast'}>Cast</Link>
-            
           </li>
           <li>
             <Link to={'reviews'}>Reviews</Link>

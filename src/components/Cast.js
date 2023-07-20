@@ -8,7 +8,7 @@ function Cast() {
   useEffect(() => {
     getMovieCredits(id).then(setMovies);
   }, [id]);
-  const { cast, name } = movies;
+  const { cast } = movies;
   console.log(Array.isArray(cast));
   return (
     <ul>
