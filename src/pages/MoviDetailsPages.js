@@ -1,12 +1,14 @@
-import { useEffect, useState } from 'react';
+import useFetchEvents from 'hooks/useFetchEvents';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { getMovieById } from 'services/movieApi';
 import NoImage from '../image/NoImage.svg.png';
 const MoviDetailsPages = () => {
   const [movies, setMovies] = useState([]);
+
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/';
-  console.log(location.state);
+  const backLinkHref = useRef(location.state?.from ?? '/');
+  // console.log(location.state);
   const { id } = useParams();
   useEffect(() => {
     getMovieById(id).then(setMovies);
@@ -14,7 +16,7 @@ const MoviDetailsPages = () => {
   const { title, poster_path, name, overview, vote_average, genres } = movies;
   return (
     <>
-      <Link to={backLinkHref}>Back to products</Link>
+      <Link to={backLinkHref.current}>Back to products</Link>
       {title && <h2>{title}</h2>}
       {vote_average && <p>User Score: {vote_average}</p>}
       {overview && (
@@ -47,6 +49,7 @@ const MoviDetailsPages = () => {
         <ul>
           <li>
             <Link to={'cast'}>Cast</Link>
+            
           </li>
           <li>
             <Link to={'reviews'}>Reviews</Link>
@@ -54,7 +57,9 @@ const MoviDetailsPages = () => {
         </ul>
         <hr />
       </div>
-      <Outlet />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
     </>
   );
 };

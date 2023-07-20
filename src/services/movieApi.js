@@ -38,3 +38,16 @@ export async function getMovieByName(queryString) {
     throw error;
   }
 }
+export async function getMovieCredits(movie_id) {
+  console.log('hey');
+  const query = `/movie/${movie_id}/credits`;
+  // https://api.themoviedb.org/3/movie/movie_id/images
+
+  try {
+    const { data } = await instance.get(query);
+    console.log(data);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
