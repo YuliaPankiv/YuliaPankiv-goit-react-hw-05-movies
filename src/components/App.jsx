@@ -16,10 +16,12 @@ export const App = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePages />} />
           <Route path="/movies/:id" element={<MoviDetailsPages />}>
+            
             <Route path="reviews" element={<Reviews />} />
             <Route path="cast" element={<Cast />} />
           </Route>
           <Route path="movies" element={<MoviesPages />}></Route>
+          <Route path="*" element={<p>Not Found</p>} />
         </Route>
       </Routes>
     </Container>
