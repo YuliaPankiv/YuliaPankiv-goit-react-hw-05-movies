@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getMovieById } from 'services/movieApi';
 
 const useFetchEvents = () => {
+  
   const [event, setEvent] = useState(null);
 
   const { id } = useParams();

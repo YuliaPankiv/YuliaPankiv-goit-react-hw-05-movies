@@ -3,14 +3,14 @@ import axios from 'axios';
 const instance = axios.create({
   baseURL: 'https://api.themoviedb.org/3',
   params: {
-    api_key: 'fc796f7b11190ed6492d14312c74fa7c',
+    api_key: 'c5d5f3c7e995d560efb7f68509bca849',
     language: 'en-US',
   },
 });
 
 export async function getTrendingMovies() {
-  const query = `trending/all/day`;
-  try {
+  const query = 'trending/all/day';
+    try {
     const { data } = await instance.get(query);
     return data.results;
   } catch (error) {
