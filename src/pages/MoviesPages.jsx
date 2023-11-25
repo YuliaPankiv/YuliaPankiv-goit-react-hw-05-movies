@@ -32,13 +32,10 @@ const MoviesPages = () => {
     setSearchParams({ query: searchName });
     form.reset();
   };
+  console.log(movies);
   return (
     <div>
       <SearchFormInput onSubmit={ClickOnButton} />
-      {/* <form className="" onSubmit={ClickOnButton}>
-        <input type="text" name="query" />
-        <button type="submit">Search</button>
-      </form> */}
       <ToastContainer />
       {query && <ListMovies movies={movies.results} />}
       <Suspense fallback={<div>Loading...</div>}>

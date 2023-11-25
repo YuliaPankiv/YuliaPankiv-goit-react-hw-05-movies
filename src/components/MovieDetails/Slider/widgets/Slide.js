@@ -12,7 +12,7 @@ export default function Slide({ data: { profile_path, name, character } }) {
           <SlideImage
             src={`https://image.tmdb.org/t/p/w200/${profile_path}`}
             alt={name}
-            width={100}
+            width={50}
           />
 
           <SlideTitle title={name} />

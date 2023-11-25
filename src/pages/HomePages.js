@@ -13,7 +13,6 @@ const HomePages = () => {
   return (
     <>
       <h2>Trending Today</h2>
-      <Slider />
       <ListMovies movies={movies} />
     </>
   );
