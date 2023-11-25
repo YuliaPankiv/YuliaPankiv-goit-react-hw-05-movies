@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useState, useEffect } from 'react';
 import { Outlet, useSearchParams } from 'react-router-dom';
 import { getMovieByName } from 'services/movieApi';
+import SearchFormInput from 'components/MovieDetails/SearchForm/SearchForm';
 
 const MoviesPages = () => {
   const [movies, setMovies] = useState([]);
@@ -33,10 +34,11 @@ const MoviesPages = () => {
   };
   return (
     <div>
-      <form className="" onSubmit={ClickOnButton}>
+      <SearchFormInput onSubmit={ClickOnButton} />
+      {/* <form className="" onSubmit={ClickOnButton}>
         <input type="text" name="query" />
         <button type="submit">Search</button>
-      </form>
+      </form> */}
       <ToastContainer />
       {query && <ListMovies movies={movies.results} />}
       <Suspense fallback={<div>Loading...</div>}>
