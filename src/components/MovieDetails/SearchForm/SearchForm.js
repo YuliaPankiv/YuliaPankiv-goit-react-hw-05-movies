@@ -1,14 +1,16 @@
 import React from 'react';
 import { CiSearch } from 'react-icons/ci';
-import { SearchForm } from './SearchForm.styled';
+import { Container, SearchForm } from './SearchForm.styled';
 const SearchFormInput = ({ ClickOnButton }) => {
   return (
-    <SearchForm className="" onSubmit={ClickOnButton}>
-      <input type="text" name="query" />
-      <button type="submit">
-        <CiSearch />
-      </button>
-    </SearchForm>
+    <Container>
+      <SearchForm onSubmit={ClickOnButton}>
+        <input type="text" name="query" />
+        <button type="submit">
+          <CiSearch />
+        </button>
+      </SearchForm>
+    </Container>
   );
 };
 

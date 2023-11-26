@@ -22,7 +22,7 @@ export async function getMovieById(id) {
   const query = `/movie/${id}`;
   try {
     const { data } = await instance.get(query);
-    // console.log(data);
+    console.log(data);
     return data;
   } catch (error) {
     throw error;

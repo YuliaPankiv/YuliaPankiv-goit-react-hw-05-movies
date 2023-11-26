@@ -1,19 +1,20 @@
 import ListItem from 'components/ListItem/ListItem';
 import React from 'react';
 import { useLocation } from 'react-router-dom';
+import { Item, List } from './ListMovies.styled';
 
 export default function ListMovies({ movies }) {
   const location = useLocation();
   return (
     <>
       {Array.isArray(movies) ? (
-        <ul>
+        <List>
           {movies.map(movie => (
-            <li key={movie.id}>
+            <Item key={movie.id}>
               <ListItem movie={movie} location={location} />
-            </li>
+            </Item>
           ))}
-        </ul>
+        </List>
       ) : (
         <p>Try again</p>
       )}

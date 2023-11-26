@@ -12,8 +12,8 @@ export const SearchForm = styled.form`
     padding: 10px 14px;
     font-size: 12px;
     line-height: 1.17;
-    border: 0;
-    border-radius: 100px;
+    /* border: 0; */
+    border-radius: 4px;
     transition: all 0.35s ease-out;
     margin: 0;
   }
@@ -39,4 +39,8 @@ export const SearchForm = styled.form`
     align-items: center;
     transition: all 0.35s ease-out;
   }
+`;
+export const Container = styled.div`
+  display: flex;
+  justify-content: center;
 `;
