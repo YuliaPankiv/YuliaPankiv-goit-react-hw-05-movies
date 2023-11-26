@@ -7,7 +7,7 @@ export const StyledNavLink = styled(NavLink)`
   border-radius: 4px;
   text-decoration: none;
   color: black;
-  font-weight: 500;
+  font-weight: 700;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
   &.active {
@@ -19,7 +19,7 @@ export const StyledNavLink = styled(NavLink)`
   }
 
   &:hover {
-    transform: scale(1.03);
-    box-shadow: 0 1px 1px #0000001f, 0 4px 4px #0000000f, 1px 4px 6px #00000029;
+    transform: scale(1.1);
+    /* box-shadow: 0 1px 1px #0000001f, 0 4px 4px #0000000f, 1px 4px 6px #00000029; */
   }
 `;

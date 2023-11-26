@@ -1,7 +1,7 @@
 import { Suspense, useEffect, useRef, useState } from 'react';
 import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { getMovieById } from 'services/movieApi';
-import ButtonBack from './BtnBack/BtnBack';
+import ButtonBack from '../components/BtnBack/BtnBack';
 import MovieDetails from 'components/MovieDetails/MoviDetails';
 import LinkAdditionalInform from 'components/MovieDetails/LinkAdditionanlInform/LinkAdditionalInform';
 

@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getTrendingMovies } from 'services/movieApi';
 import ListMovies from 'components/ListMovies/ListMovies';
-import Slider from 'components/Slider/Slider';
 
 const HomePages = () => {
   const [movies, setMovies] = useState([]);
@@ -12,6 +11,7 @@ const HomePages = () => {
 
   return (
     <>
+      {/* <Slider movies={movies} /> */}
       <h2>Trending Today</h2>
       <ListMovies movies={movies} />
     </>

@@ -6,8 +6,9 @@ export const Container = styled.div`
   flex-direction: row-reverse;
   /* padding: 7px 0; */
   justify-content: flex-end;
-  margin: 0 auto;
-  gap: 15px;
+  /* margin: 0 auto; */
+  padding-bottom: 20px;
+  gap: 10px;
   border-bottom: 3px solid #0000001f;
 
   min-width: 320px;

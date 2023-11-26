@@ -10,7 +10,7 @@ const instance = axios.create({
 
 export async function getTrendingMovies() {
   const query = 'trending/all/day';
-    try {
+  try {
     const { data } = await instance.get(query);
     return data.results;
   } catch (error) {
@@ -28,6 +28,7 @@ export async function getMovieById(id) {
     throw error;
   }
 }
+
 export async function getMovieByName(queryString) {
   const query = `/search/movie?query=${queryString}`;
   try {
@@ -38,14 +39,23 @@ export async function getMovieByName(queryString) {
     throw error;
   }
 }
+
 export async function getMovieCredits(movie_id) {
-  console.log('hey');
   const query = `/movie/${movie_id}/credits`;
   // https://api.themoviedb.org/3/movie/movie_id/images
 
   try {
     const { data } = await instance.get(query);
-    console.log(data);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getMovieReviews(movie_id) {
+  const query = `/movie/${movie_id}/reviews`;
+  try {
+    const { data } = await instance.get(query);
     return data;
   } catch (error) {
     throw error;

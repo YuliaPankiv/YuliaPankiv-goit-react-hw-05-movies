@@ -75,7 +75,7 @@ const Slider = function ({ width, height, autoPlay, autoPlayTime, movie }) {
     return () => {
       clearInterval(interval);
     };
-  }, [items.length, slide]); // when images uploaded or slide changed manually we start timer
+  }, [autoPlay, autoPlayTime, changeSlide, items.length, slide]); // when images uploaded or slide changed manually we start timer
 
   return (
     <div
@@ -109,8 +109,8 @@ Slider.propTypes = {
 };
 
 Slider.defaultProps = {
-  autoPlay: true,
-  autoPlayTime: 5000,
+  autoPlay: false,
+  autoPlayTime: 3000,
   width: '100%',
   height: '100%',
 };
