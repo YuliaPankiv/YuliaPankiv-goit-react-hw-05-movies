@@ -1,4 +1,4 @@
-import React, { useEffect, useState, createContext } from 'react';
+import React, { useEffect, useState, createContext, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import Arrows from './Controls/Arrows';
 import SlidesList from './widgets/SlideList';
@@ -24,17 +24,20 @@ const Slider = function ({ width, height, autoPlay, autoPlayTime, movie }) {
     }
   }, [cast]);
 
-  const changeSlide = (direction = 1) => {
-    let slideNumber = 0;
+  const changeSlide = useCallback(
+    (direction = 1) => {
+      let slideNumber = 0;
 
-    if (slide + direction < 0) {
-      slideNumber = items.length - 1;
-    } else {
-      slideNumber = (slide + direction) % items.length;
-    }
+      if (slide + direction < 0) {
+        slideNumber = items.length - 1;
+      } else {
+        slideNumber = (slide + direction) % items.length;
+      }
 
-    setSlide(slideNumber);
-  };
+      setSlide(slideNumber);
+    },
+    [items.length, slide]
+  );
 
   const goToSlide = number => {
     setSlide(number % items.length);
