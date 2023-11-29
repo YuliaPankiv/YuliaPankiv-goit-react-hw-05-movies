@@ -14,11 +14,7 @@ const Slider = function ({ width, height, autoPlay, autoPlayTime, movie }) {
   useEffect(() => {
     if (cast) {
       const loadData = async () => {
-        const images = await cast.filter(({ profile_path }) => {
-          if (profile_path) {
-            return profile_path;
-          }
-        });
+        const images = await cast.filter(({ profile_path }) => profile_path);
 
         setItems(images);
       };
