@@ -5,6 +5,7 @@ import ListMovies from 'components/ListMovies/ListMovies';
 import { Pagination, Stack, PaginationItem, Link } from '@mui/material';
 import { Link as NavLink } from 'react-router-dom';
 import { Container } from './Container.styled';
+import { PaginationMovie } from 'components/Pagination/Pagination';
 const HomePages = props => {
   const [movies, setMovies] = useState([]);
   const [totalPage, setTotalPage] = useState(0);
@@ -34,28 +35,20 @@ const HomePages = props => {
   // };
   return (
     <Container>
-      <h2>Trending Today</h2>{' '}
-      <Stack spacing={1}>
-        {!!totalPage && (
-          <Pagination
-            count={totalPage}
-            movies={movies}
-            page={page}
-            onChange={(_, num) => setPage(num)}
-            sx={{ marginY: 3, marginX: 'auto' }}
-            showFirstButton
-            showLastButton
-            renderItem={item => (
-              <PaginationItem
-                component={NavLink}
-                to={`/?page=${item.page}`}
-                {...item}
-              />
-            )}
-          />
-        )}
-      </Stack>
+      <h2>Trending Today</h2>
+      <PaginationMovie
+        totalPage={totalPage}
+        movies={movies}
+        page={page}
+        setPage={setPage}
+      />
       <ListMovies movies={movies} loading={loading} />
+      <PaginationMovie
+        totalPage={totalPage}
+        movies={movies}
+        page={page}
+        setPage={setPage}
+      />
     </Container>
   );
 };

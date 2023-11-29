@@ -1,22 +1,27 @@
-// import { Pagination } from '@mui/material';
-// import React, { useState } from 'react';
+import { Pagination, PaginationItem, Stack } from '@mui/material';
+import { NavLink } from 'react-router-dom';
 
-// export const PaginationI = ({ moviePerPage, totalMovie, paginate }) => {
-//   const pageNumbers = [];
-//   for (let index = 1; index < Math.ceil(totalMovie / moviePerPage); index++) {
-//     pageNumbers.push(index);
-//   }
-//   return (
-//     <Pagination>
-//       <ul>
-//         {pageNumbers.map(number => (
-//           <li key={number}>
-//             <a href="#" onClick={() => paginate(number)}>
-//               {number}
-//             </a>
-//           </li>
-//         ))}
-//       </ul>
-//     </Pagination>
-//   );
-// };
+export const PaginationMovie = ({ totalPage, movies, page, setPage }) => {
+  return (
+    <Stack>
+      {!!totalPage && (
+        <Pagination
+          count={totalPage}
+          movies={movies}
+          page={page}
+          onChange={(_, num) => setPage(num)}
+          sx={{ marginY: 3, marginX: 'auto' }}
+          showFirstButton
+          showLastButton
+          renderItem={item => (
+            <PaginationItem
+              component={NavLink}
+              to={`/?page=${item.page}`}
+              {...item}
+            />
+          )}
+        />
+      )}
+    </Stack>
+  );
+};

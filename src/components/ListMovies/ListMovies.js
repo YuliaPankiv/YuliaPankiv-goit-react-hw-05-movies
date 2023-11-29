@@ -1,7 +1,7 @@
-import ListItem from 'components/ListItem/ListItem';
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { Item, List } from './ListMovies.styled';
+import ListMovie from 'components/ListItem/ListItem';
 
 export default function ListMovies({ movies }) {
   const location = useLocation();
@@ -11,7 +11,7 @@ export default function ListMovies({ movies }) {
         <List>
           {movies.map(movie => (
             <Item key={movie.id}>
-              <ListItem movie={movie} location={location} />
+              <ListMovie movie={movie} location={location} />
             </Item>
           ))}
         </List>

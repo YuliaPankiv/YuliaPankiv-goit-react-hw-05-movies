@@ -10,7 +10,8 @@ export const List = styled.ul`
 `;
 export const Item = styled.li`
   /* width: 30%; */
-  max-width: 20%;
+  /* max-width: 20%; */
+  max-width: 300px;
   height: auto;
   display: flex;
   align-items: center;
