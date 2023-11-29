@@ -2,8 +2,6 @@ import { useEffect, useState } from 'react';
 import { getTrendingMovies } from 'services/movieApi';
 import ListMovies from 'components/ListMovies/ListMovies';
 // import { PaginationI } from 'components/Pagination/Pagination';
-import { Pagination, Stack, PaginationItem, Link } from '@mui/material';
-import { Link as NavLink } from 'react-router-dom';
 import { Container } from './Container.styled';
 import { PaginationMovie } from 'components/Pagination/Pagination';
 const HomePages = props => {
