@@ -14,9 +14,11 @@ const Slider = function ({ width, height, autoPlay, autoPlayTime, movie }) {
   useEffect(() => {
     if (cast) {
       const loadData = async () => {
-        const images = await cast.filter(
-          ({ id, name, character, profile_path }) => profile_path
-        );
+        const images = await cast.filter(({ profile_path }) => {
+          if (profile_path) {
+            return profile_path;
+          }
+        });
 
         setItems(images);
       };
@@ -96,9 +98,13 @@ const Slider = function ({ width, height, autoPlay, autoPlayTime, movie }) {
           items,
         }}
       >
-        <Arrows />
-        <SlidesList />
-        <Dots />
+        {items.length > 0 && (
+          <>
+            <Arrows />
+            <SlidesList />
+            <Dots />
+          </>
+        )}
       </SliderContext.Provider>
     </div>
   );

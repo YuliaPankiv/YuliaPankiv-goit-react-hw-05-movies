@@ -5,14 +5,19 @@ const instance = axios.create({
   params: {
     api_key: 'c5d5f3c7e995d560efb7f68509bca849',
     language: 'en-US',
+    page: '1',
   },
 });
 
-export async function getTrendingMovies() {
+export async function getTrendingMovies(page = 1) {
   const query = 'trending/all/day';
+
   try {
-    const { data } = await instance.get(query);
-    return data.results;
+    const { data } = await instance.get(`${query}`, {
+      params: { page: page },
+    });
+    console.log(data);
+    return data;
   } catch (error) {
     throw error;
   }

@@ -2,12 +2,18 @@ import styled from '@emotion/styled';
 
 export const List = styled.ul`
   display: flex;
-  row-gap: 8px;
+  width: 100%;
+  gap: 20px;
   flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
 `;
 export const Item = styled.li`
-  width: 50%;
+  /* width: 30%; */
+  max-width: 20%;
+  height: auto;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 8px;
+  box-sizing: border-box;
 `;

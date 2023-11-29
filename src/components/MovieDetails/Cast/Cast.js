@@ -12,7 +12,7 @@ function Cast() {
   const { cast } = movies;
   return (
     <>
-      {Array.isArray(cast) && <Slider movie={movies} />}{' '}
+      {cast && <Slider movie={movies} />}{' '}
       {/* <List>
         <div cast={cast} />
         {cast &&
