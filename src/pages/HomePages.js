@@ -8,9 +8,9 @@ import { useSearchParams } from 'react-router-dom';
 const HomePages = props => {
   const [movies, setMovies] = useState([]);
   const [totalPage, setTotalPage] = useState(0);
-  const [page, setPage] = useState(1);
+  // const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const currentPage = Number(searchParams.get('page')) ?? 1;
   console.log(currentPage);
   // const [moviePerPage] = useState(50);
@@ -27,8 +27,7 @@ const HomePages = props => {
     } catch (error) {
       console.log(error.message);
     }
-  }, [currentPage]);
-  console.log(props);
+  }, [currentPage, searchPage]);
   // const lastMovieIndex = currentPage * moviePerPage;
   // const firstMovieIndex = lastMovieIndex - moviePerPage;
   // const currentMovie = movies.slice(firstMovieIndex, lastMovieIndex);
@@ -43,7 +42,7 @@ const HomePages = props => {
         totalPage={totalPage}
         movies={movies}
         page={searchPage}
-        setPage={setPage}
+        // setPage={setPage}
       />
       <ListMovies movies={movies} loading={loading} />
       {/* <PaginationMovie
