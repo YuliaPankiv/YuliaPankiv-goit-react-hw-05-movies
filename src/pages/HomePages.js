@@ -45,12 +45,11 @@ const HomePages = props => {
         // setPage={setPage}
       />
       <ListMovies movies={movies} loading={loading} />
-      {/* <PaginationMovie
+      <PaginationMovie
         totalPage={totalPage}
         movies={movies}
-        page={page}
-        setPage={setPage}
-      /> */}
+        page={searchPage}
+      />
     </Container>
   );
 };
