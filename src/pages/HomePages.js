@@ -4,17 +4,22 @@ import ListMovies from 'components/ListMovies/ListMovies';
 // import { PaginationI } from 'components/Pagination/Pagination';
 import { Container } from './Container.styled';
 import { PaginationMovie } from 'components/Pagination/Pagination';
+import { useSearchParams } from 'react-router-dom';
 const HomePages = props => {
   const [movies, setMovies] = useState([]);
   const [totalPage, setTotalPage] = useState(0);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const currentPage = Number(searchParams.get('page')) ?? 1;
+  console.log(currentPage);
   // const [moviePerPage] = useState(50);
+  const searchPage = currentPage === 0 ? 1 : currentPage;
 
   useEffect(() => {
     try {
       setLoading(true);
-      getTrendingMovies(page).then(res => {
+      getTrendingMovies(searchPage).then(res => {
         setMovies(res.results);
         setTotalPage(res.total_pages);
         setLoading(false);
@@ -22,7 +27,7 @@ const HomePages = props => {
     } catch (error) {
       console.log(error.message);
     }
-  }, [page]);
+  }, [currentPage]);
   console.log(props);
   // const lastMovieIndex = currentPage * moviePerPage;
   // const firstMovieIndex = lastMovieIndex - moviePerPage;
@@ -37,16 +42,16 @@ const HomePages = props => {
       <PaginationMovie
         totalPage={totalPage}
         movies={movies}
-        page={page}
+        page={searchPage}
         setPage={setPage}
       />
       <ListMovies movies={movies} loading={loading} />
-      <PaginationMovie
+      {/* <PaginationMovie
         totalPage={totalPage}
         movies={movies}
         page={page}
         setPage={setPage}
-      />
+      /> */}
     </Container>
   );
 };

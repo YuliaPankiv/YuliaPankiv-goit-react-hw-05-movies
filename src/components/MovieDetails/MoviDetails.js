@@ -1,10 +1,22 @@
 import { Container } from 'components/MovieDetails/MovieDetails.styled';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import NoImage from '../../image/NoImage.svg.png';
+import { useParams } from 'react-router-dom';
+import { getMovieById } from 'services/movieApi';
 
-const MovieDetails = ({ movie }) => {
-  const { title, poster_path, name, overview, vote_average, genres } = movie;
-
+const MovieDetails = () => {
+  const [movies, setMovies] = useState([]);
+  const { title, poster_path, name, overview, vote_average, genres } = movies;
+  const { id } = useParams();
+  console.log(id);
+  useEffect(() => {
+    try {
+      getMovieById(id).then(setMovies);
+      console.log(movies);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }, [id]);
   return (
     <Container>
       <div>
@@ -26,7 +38,7 @@ const MovieDetails = ({ movie }) => {
         )}
         {name && <h3>{name}</h3>}
       </div>
-      <div>
+      <div style={{ minWidth: 200, maxWidth: 300 }}>
         {poster_path ? (
           <img
             src={`https://image.tmdb.org/t/p/w500/${poster_path}`}

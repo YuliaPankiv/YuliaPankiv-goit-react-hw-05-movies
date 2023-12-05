@@ -4,21 +4,24 @@ import { getMovieReviews } from 'services/movieApi';
 
 function Reviews() {
   const { id } = useParams();
-  const [movies, setMovies] = useState([]);
+  const [movie, setMovies] = useState([]);
   useEffect(() => {
     getMovieReviews(id).then(setMovies);
   }, [id]);
-  const { results } = movies;
+  const { results } = movie;
 
   return (
     <>
-      {results &&
+      {results?.length > 0 ? (
         results.map(({ author, content, id }) => (
           <div key={id}>
             <h5>Author: {author}</h5>
             <p>{content}</p>
           </div>
-        ))}
+        ))
+      ) : (
+        <p>There are currently no reviews for this film.</p>
+      )}
     </>
   );
 }

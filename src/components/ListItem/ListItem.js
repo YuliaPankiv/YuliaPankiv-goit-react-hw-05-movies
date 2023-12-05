@@ -64,17 +64,16 @@ function ListMovie({ movie, location }) {
     release_date,
     first_air_date,
   } = movie;
+
   let shortTitle;
 
   if (title) {
-    shortTitle = title.length <= 15 ? title : `${title.slice(0, 15)} ...`;
+    shortTitle = title.length <= 21 ? title : `${title.slice(0, 21)}...`;
   }
-
   let shortName;
   if (name) {
-    shortName = name?.length <= 15 ? name : `${name.slice(0, 15)} ...`;
+    shortName = name?.length <= 21 ? name : `${name.slice(0, 21)} ...`;
   }
-
   return (
     <Link to={`/movies/${id}`} state={{ from: location }}>
       <Card sx={{ maxWidth: 345 }}>
@@ -83,7 +82,7 @@ function ListMovie({ movie, location }) {
             <CardMedia
               component="img"
               height="auto"
-              image={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+              image={`https://image.tmdb.org/t/p/w300/${poster_path}`}
               alt="green iguana"
             />
           ) : (
